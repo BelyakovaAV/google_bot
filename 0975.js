@@ -29,8 +29,15 @@ if (btnK !== undefined) {
 
 
   } else if (location.hostname == "napli.ru") {
-   console.log("Мы на целевом сайте!");
-   } else {
+    //console.log("Мы на целевом сайте!");
+    setInterval(() =>{
+      let index = getRandom(0, links.length);
+      if (getRandom(0,101) > 70) {
+        location.href = "https://www.google.com/";
+      }
+      if (links[index].href.indexOf("napli.ru") !== -1) links[index].click();
+    }, getRandom(3000,5000));
+  } else {
     let nextGooglePage = true;
     for (let i = 0; i < links.length; i++) {
       if (links[i].href.indexOf("napli.ru") !== -1) {
@@ -39,11 +46,11 @@ if (btnK !== undefined) {
         console.log("Нашел строку " + link);
         setTimeout(()=>{
           link.click();
-        }, getRandom(1500,4000));
+        }, getRandom(2000,3000));
         break;
       }
     }
-    if(document.querySelector(".YyVfkd").innerText == "3") {
+    if(document.querySelector(".YyVfkd").innerText == "5") {
       nextGooglePage = false;
       location.href = "https://www.google.com/";
     }
@@ -56,7 +63,6 @@ if (btnK !== undefined) {
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min) + min)
 }
-
 
 
 
